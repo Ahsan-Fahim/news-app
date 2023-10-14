@@ -1,0 +1,124 @@
+generator client {
+    provider        = "prisma-client-js"
+    previewFeatures = ["fullTextSearch"]
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+enum Gender {
+    MALE
+    FEMALE
+}
+
+enum RoleCode {
+    ADMIN
+    USER
+}
+
+enum Status {
+    PUBLIC
+    PRIVATE
+    DRAFT
+}
+
+enum TokenType {
+    SIGNIN
+    SIGNUP
+}
+
+enum Currency {
+    USD
+}
+
+enum InvoiceStatus {
+    initiated
+    paid
+    reject
+    cancel
+}
+
+// ==========================================================================================
+// ==========================================================================================
+// ==========================================================================================
+
+model Role {
+    id        String   @id @default(uuid())
+    code      RoleCode @unique
+    status    Status   @default(PUBLIC)
+    isActive  Boolean  @default(true)
+    isDeleted Boolean  @default(false)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    User      User[]
+}
+
+model Keystore {
+    id           String    @id @default(uuid())
+    primaryKey   String
+    secondaryKey String
+    status       Status    @default(PUBLIC)
+    createdAt    DateTime? @default(now())
+    updatedAt    DateTime? @updatedAt
+    clientId     String?
+    client       User?     @relation(fields: [clientId], references: [id])
+}
+
+model Tokenstore {
+    id        String    @id @default(uuid())
+    type      TokenType
+    token     String    @unique
+    shot_code String    @unique
+    createdAt DateTime? @default(now())
+    updatedAt DateTime? @updatedAt
+    expireAt  DateTime
+    userId    String
+    user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+    id                String  @id @default(uuid())
+    email             String? @unique
+    username          String? @unique
+    password          String
+    stripe_customerId String?
+
+    first_name          String?
+    last_name           String?
+    phone               String?
+    profile_picture     String?
+    gender              Gender?
+    profile             String?
+    dateOfBirth         DateTime?
+    commisionPercentage Float?
+
+    status     Status?   @default(PUBLIC)
+    isAccepted Boolean?  @default(false)
+    isVerified Boolean?  @default(true)
+    isActive   Boolean?  @default(true)
+    isDeleted  Boolean?  @default(false)
+    createdAt  DateTime? @default(now())
+    updatedAt  DateTime? @updatedAt
+
+    roleId String
+    role   Role   @relation(fields: [roleId], references: [id])
+
+    Keystore   Keystore[]
+    tokenstore Tokenstore[]
+    Invoice    Invoice[]
+}
+
+model Invoice {
+    id             String        @id @default(uuid())
+    stripe         String        @unique
+    price          Int
+    currency       Currency
+    userId         String
+    status         InvoiceStatus @default(initiated)
+    isDeleted      Boolean?      @default(false)
+    createdAt      DateTime?     @default(now())
+    updatedAt      DateTime?     @updatedAt
+    user           User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
