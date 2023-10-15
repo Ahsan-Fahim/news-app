@@ -7,8 +7,7 @@ export function middleware(request: NextRequest) {
     const token = request.cookies.get('accessToken')?.value
     console.log("abcd", token)
     if (!token || token == undefined) {
-        NextResponse.redirect(new URL('/auth/login', request.url))
-        return NextResponse.next()
+        return NextResponse.redirect(new URL('/auth/login', request.url))
     }
 }
 

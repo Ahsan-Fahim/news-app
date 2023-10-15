@@ -19,12 +19,12 @@ export const DATABASE = {
 }
 
 export const StripeCred = {
-    clientSecret: "sk_test_51Lc8HiKuANEC8G8JNHApTgJd1rRqxgYNompouAOAP3L7uaqrpGBbR5hqn5lV7mPhwwkygSaXgTTbsmzUM8S9Gr2U00l1Qjr0Gg",
+    clientSecret: "sk_test_51Hso8uArFHWptmq0NMANBuqJaojG6x1uqz5RjE0rMr91DeGSVzYEv1o0fqHirXrZAGqAL8iLbLWIuhaT0tlBdEjp00by5g0qE1",
     development: {
-        clientSecret: "sk_test_51Lc8HiKuANEC8G8JNHApTgJd1rRqxgYNompouAOAP3L7uaqrpGBbR5hqn5lV7mPhwwkygSaXgTTbsmzUM8S9Gr2U00l1Qjr0Gg"
+        clientSecret: "sk_test_51Hso8uArFHWptmq0NMANBuqJaojG6x1uqz5RjE0rMr91DeGSVzYEv1o0fqHirXrZAGqAL8iLbLWIuhaT0tlBdEjp00by5g0qE1"
     },
     production: {
-        clientSecret: "sk_test_51Lc8HiKuANEC8G8JNHApTgJd1rRqxgYNompouAOAP3L7uaqrpGBbR5hqn5lV7mPhwwkygSaXgTTbsmzUM8S9Gr2U00l1Qjr0Gg"
+        clientSecret: "sk_test_51Hso8uArFHWptmq0NMANBuqJaojG6x1uqz5RjE0rMr91DeGSVzYEv1o0fqHirXrZAGqAL8iLbLWIuhaT0tlBdEjp00by5g0qE1"
     }
 }
 

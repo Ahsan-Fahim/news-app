@@ -67,7 +67,7 @@ export default function CheckoutForm({
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: `http://localhost:3001/category/success/`, // live
+        return_url: `http://localhost:3000/apps/news`, // live
         // return_url: `http://192.168.0.136:8002/api/v1/invoice/payment_intents/confirm/${paymentIntent.id}` // local
       },
     });
@@ -91,7 +91,7 @@ export default function CheckoutForm({
 
   return (
     <>
-      <form id="payment-form" onSubmit={handleSubmit}>
+      <form id="payment-form" className="w-4/5 mt-10 mx-auto" onSubmit={handleSubmit}>
         <PaymentElement id="payment-element" options={{ layout: "tabs" }} />
         <Button
           disabled={isLoading || !stripe || !elements}

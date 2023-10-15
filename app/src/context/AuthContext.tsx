@@ -145,7 +145,7 @@ const AuthProvider = ({ children }: Props) => {
     cookies.remove(authConfig.refreshTokenKeyName);
     window.localStorage.removeItem(authConfig.storageTokenKeyName);
     window.localStorage.removeItem(authConfig.refreshTokenKeyName);
-    router.push("/login");
+    router.push("/auth/login");
   };
 
   const handleRegister = (

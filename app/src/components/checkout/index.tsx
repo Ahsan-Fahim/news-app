@@ -16,7 +16,7 @@ import { IUser } from "@/types/apps/user";
 import { Skeleton } from "../ui/skeleton";
 
 const stripePromise = loadStripe(
-  "pk_test_51MFR2TIadObZ2b5rMClrfGQqKXqrJD3ZwO7Oy3THjAVxmsNifhkcNVLkCVOZyn5hVyonASBfle6A4MDgDkJCqF0Q00TsDGn1Rg"
+  "pk_test_51Hso8uArFHWptmq0KKLSl7HJGJsm3W4USLknsTF8GifRXnGDYDKtxiqtZZ7ckZrOdpXZZHHeUs0WqAyxjkNlR5CR00eGOajHbA"
 );
 // pk_test_51MFR2TIadObZ2b5rMClrfGQqKXqrJD3ZwO7Oy3THjAVxmsNifhkcNVLkCVOZyn5hVyonASBfle6A4MDgDkJCqF0Q00TsDGn1Rg
 // sk_test_51MFR2TIadObZ2b5rh7mfKwSaAbNLgR0QxgTSIWNUlzBD0M6RQYDg4YVI7RzLzZOg2pbkrqSZlJyIWP2Ye8JDWG35004dE9L9oI
@@ -34,7 +34,7 @@ const Checkout: React.FC<Props> = () => {
   const createPaymentIntent = () => {
     createIntent()
       .then(async ({ data: response }) => {
-        setPaymentIntent(response.data.payment);
+        setPaymentIntent(response.payment);
       })
       .catch((error) => {
         console.log(error);
@@ -55,7 +55,7 @@ const Checkout: React.FC<Props> = () => {
       redirect("/apps/news");
     }
 
-    // createPaymentIntentHandler();
+    createPaymentIntentHandler();
 
     return () => {
       setPaymentIntent(null);
