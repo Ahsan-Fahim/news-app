@@ -34,20 +34,20 @@ export default async function News() {
 
   return (
     <>
-      <div className="flex items-center mt-10 ml-10">
-        <div className="flex flex-wrap">
+      <div className="flex items-center mt-10 mx-5">
+        <div className="flex flex-wrap flex-col md:flex-row">
           <div className="flex flex-wrap flex-row basis-1/2 overflow-hidden">
             {data.articles.map((news: any) => {
               return (
                 <>
-                  <div className="relative h-80 basis-1/3 overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64 mb-10">
+                  <div className="relative h-80 basis-full mt-10 md:mt-0 md:basis-1/3 overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64 mb-10">
                     <img
                       src={news.urlToImage}
                       alt={news.title}
                       className="h-full w-full object-cover object-center"
                     />
                   </div>
-                  <div className="ml-10 w-1/2">
+                  <div className="mx-5 w-full md:w-1/2">
                     <h3 className="text-sm text-gray-500">
                       <a href={news.url}>
                         {/* <span className="absolute inset-0" /> */}
@@ -68,7 +68,9 @@ export default async function News() {
               return (
                 <div key={id} className="flex flex-wrap flex-row">
                   <div className="relative h-60 basis-1/12 overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64 mb-10">
-                    <h1 className="text-center text-2xl font-semibold">#{id + 1}</h1>
+                    <h1 className="text-center text-2xl font-semibold">
+                      #{id + 1}
+                    </h1>
                   </div>
                   <div className="basis-11/12">
                     <h3 className="text-sm text-gray-500">

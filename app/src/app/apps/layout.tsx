@@ -4,7 +4,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <main className="h-screen content-center">
       <Navbar />
-      <div>{children}</div>
+      {children}
     </main>
   );
 }
